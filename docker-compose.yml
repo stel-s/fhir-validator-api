@@ -1,0 +1,10 @@
+services:
+  fhir-validator-api:
+    build: .
+    ports:
+      - "${API_PORT:-8080}:8080"
+    env_file:
+      - .env
+    environment:
+      - VALIDATOR_JAR_PATH=/app/validator/validator_cli.jar
+    restart: unless-stopped
